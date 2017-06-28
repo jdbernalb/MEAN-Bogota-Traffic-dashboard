@@ -1,0 +1,56 @@
+<!-- div *ngFor="let shape of arrayshape;let i = index">
+    <h1>{{allstreets[i].name}}</h1>
+<div *ngFor="let point of shape">
+    <span>lat: {{point.lat}}</span>
+    <span>lng: {{point.lng}}</span>
+
+</div>
+< /div-->
+
+
+<div layout="row">
+<md-toolbar color="primary">
+<span>Tesis</span>
+</md-toolbar>
+</div>
+<div class="flex-container">
+<div class="flex-item-menu">
+<md-card>
+  <md-card-content>
+    <h2 class="options-h2">Opciones</h2>
+    <section class="options-section">
+  <md-checkbox [checked]="true"> Mostrar congestión</md-checkbox>
+   </section>
+     <section class="options-section">
+  <md-checkbox> Mostrar huecos</md-checkbox>
+ </section>
+      <section class="options-section">
+  <md-checkbox> Mostrar reportes de accientes</md-checkbox>
+ </section>
+      <section class="options-section">
+  <md-checkbox> Mostrar Patrones de conducción</md-checkbox>
+ </section>
+   </md-card-content>
+</md-card>
+<md-card>
+  <md-card-content>
+      <h2 class="options-h2">Franja Horaria</h2>
+   </md-card-content>
+</md-card>
+<md-card>
+  <md-card-content>
+      <h2 class="options-h2">Fecha de Consulta</h2>
+   </md-card-content>
+</md-card>
+</div>
+<div class="flex-item-map">
+<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <sebm-google-map-polyline [strokeColor]="getJamColor(arrayjam[i])" *ngFor="let shape of arrayshape;let i = index">
+        <sebm-google-map-polyline-point *ngFor="let point of shape;  let i=index"  [latitude]="point.lat" [longitude]="point.lng">
+        </sebm-google-map-polyline-point>
+         <sebm-google-map-marker *ngFor="let point of arrayholes[i]" [latitude]="point.lat" [longitude]="point.lng" [iconUrl]="'http://labs.google.com/ridefinder/images/mm_20_red.png'" [label]="point.level.toString()">
+        </sebm-google-map-marker>
+     </sebm-google-map-polyline>
+</sebm-google-map>
+</div>
+</div>
